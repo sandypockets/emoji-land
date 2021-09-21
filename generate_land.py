@@ -4,7 +4,7 @@ from termcolor import colored
 from noise import pnoise2
 
 
-def generate_landscape(rows=10, cols=10):
+def generate_land(rows=10, cols=10):
     data = [" ", ".", "-", "#", "!", "$", "!", "#", "-", ".", " "]
     seed = random.randint(0, 100)
     land = ""
@@ -39,6 +39,7 @@ def ask_for_number(question):
     quit()
 
 
-rows = ask_for_number("How many rows? ")
-cols = ask_for_number("How many columns? ")
-generate_landscape(rows, cols)
+if __name__ == "__main__":
+    rows = ask_for_number("How many rows? ")
+    cols = ask_for_number("How many columns? ")
+    generate_land(rows, cols)
