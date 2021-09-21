@@ -4,22 +4,21 @@ from termcolor import colored
 from noise import pnoise2
 
 
-def generate_land(rows=10, cols=10):
-    data = [" ", ".", "-", "#", "!", "$", "!", "#", "-", ".", " "]
+def generate_land(rows=10, cols=10, noise_level=10):
+    data = ["🌲", "🌲", "🌲", "⛰️", "⛰️", "🏡", "🌾", "🏖️", "🏖️", "🌊", "🌊", "🌊", "🏖️", "🏖️", "🌲", "🏖️", "🌊", "🏖️", "🌴", "🌴", "🌴"]
     seed = random.randint(0, 100)
     land = ""
 
     print(f"Generate a landscape which is {cols} by {rows}")
     for row in range(rows):
         for col in range(cols):
-            n = pnoise2(row / rows, col / cols, base=seed)
-            n *= 100
+            n = pnoise2(row / rows, col / cols, base=seed, octaves=5)
+            n *= noise_level
             n = round(n)
             n = n % len(data)
             land += data[n]
         land += "\n"
 
-    print(land)
     print("Finished generating landscape")
     return land
 
